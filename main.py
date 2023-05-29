@@ -12,8 +12,6 @@ import time
 def main(user_id):
     recommended = []
     cur = connect_to_db()
-    preference_df = fetch_data_for_user(cur, user_id)
-
     user_records = fetch_data_for_user(cur, user_id)['record_id'].tolist()
 
     if not user_records:
