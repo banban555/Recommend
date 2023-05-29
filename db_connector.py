@@ -20,7 +20,7 @@ def connect_to_db():
 
 def fetch_all_data_from_table(cursor):
     sql = """
-    SELECT hashtag.id, hashtag.record_id, hashtag.tag_name, hashtag.hashtag_type
+    SELECT hashtag.id, hashtag.record_id, hashtag.tag_name
     FROM hashtag
     JOIN record ON hashtag.record_id = record.id
     WHERE record.deleted_at IS NULL

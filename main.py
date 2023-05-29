@@ -14,8 +14,7 @@ def main(user_id):
     cur = connect_to_db()
     preference_df = fetch_data_for_user(cur, user_id)
 
-    user_df = fetch_data_for_user(cur, user_id)
-    user_records = list(get_user_dataframes(user_df)['record_id'])
+    user_records = fetch_data_for_user(cur, user_id)['record_id'].tolist()
 
     if not user_records:
         return recommended
