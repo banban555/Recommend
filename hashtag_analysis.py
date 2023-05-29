@@ -55,9 +55,8 @@ def create_hashtag_similarity(hashtag_representation):
     return hashtag_similarity
 
 
-def get_user_dataframes(bookmark_df, like_df):
-    user_df = pd.concat([bookmark_df, like_df])
-    user_df.drop_duplicates(inplace=True)
+def get_user_dataframes(user_df):
+    user_df = user_df.drop_duplicates(subset=['user_id', 'record_id'])
     return user_df
 
 

@@ -12,11 +12,10 @@ import time
 def main(user_id):
     recommended = []
     cur = connect_to_db()
-    bookmark_df = fetch_data_for_user(cur, 'bookmark', user_id)
-    like_df = fetch_data_for_user(cur, 'likes', user_id)
+    preference_df = fetch_data_for_user(cur, user_id)
 
-    user_df = get_user_dataframes(bookmark_df, like_df)
-    user_records = list(user_df['record_id'])
+    user_df = fetch_data_for_user(cur, user_id)
+    user_records = list(get_user_dataframes(user_df)['record_id'])
 
     if not user_records:
         return recommended
