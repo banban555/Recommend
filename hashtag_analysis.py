@@ -6,12 +6,10 @@ from utils import cos_sim_matrix, print_dictionary, remove_similar_item
 
 
 def create_hashtag_list(hashtag_df):
-    num_of_course = len(hashtag_df)
-    hashtag_list = []
-    for tags in hashtag_df['tag_name']:
-        hashtag_list += tags.split(' ')
-        hashtag_list = list(set(hashtag_list))
-        hashtag_list = remove_similar_item(hashtag_list)
+    # 모든 태그를 단일 리스트로 통합
+    hashtag_list = [tag for tags in hashtag_df['tag_name']
+                    for tag in tags.split(' ')]
+    hashtag_list = list(set(hashtag_list))
     return hashtag_list
 
 
